@@ -125,13 +125,17 @@
     where date_trunc('month',observation_time) = '2018-01-01'
     limit 20;
       
-   select weather as conditions
+     select weather as conditions
     ,count(*) as num_trips
     from citibike.public.trips
     left outer join json_weather_data_view
         on date_trunc('hour', observation_time) = date_trunc('hour',starttime)
         where conditions is not null
         group by 1 order by 2 desc;
+        
+  
+  
+  
         
     
     
